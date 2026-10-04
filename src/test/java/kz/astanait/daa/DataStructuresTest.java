@@ -11,6 +11,27 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataStructuresTest {
 
     @Test
+    void resettingMetricsDoesNotChangeHeap() {
+        OperationMetrics metrics = new OperationMetrics();
+        MinHeap heap = new MinHeap(metrics);
+
+        heap.insert(2);
+        heap.insert(1);
+
+        assertTrue(metrics.getSteps() > 0);
+        assertTrue(metrics.getMoves() > 0);
+        assertTrue(metrics.getComparisons() > 0);
+
+        metrics.reset();
+
+        assertEquals(0, metrics.getSteps());
+        assertEquals(0, metrics.getMoves());
+        assertEquals(0, metrics.getComparisons());
+        assertEquals(2, heap.size());
+        assertEquals(1, heap.peekMin());
+    }
+
+    @Test
     void heapHandlesOnlyLeftChildAfterExtraction() {
         MinHeap heap = new MinHeap(new OperationMetrics());
 
