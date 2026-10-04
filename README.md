@@ -14,7 +14,7 @@ JDK 17 and Maven. Run commands from the directory containing pom.xml.
 mvn clean test
 ```
 
-Six JUnit 5 tests cover empty/single-element structures, invalid indices, duplicates, boundary operations, 2,000 randomized sequence operations against ArrayList, heap operations against PriorityQueue, heap order after each mutation, sorted extraction and operation counters.
+Ten JUnit 5 tests cover empty/single-element structures, invalid indices, duplicates, boundary operations, 2,000 randomized sequence operations against ArrayList, heap operations against PriorityQueue, heap order after each mutation, sorted extraction and operation counters.
 
 ## Run the benchmark
 
@@ -33,7 +33,6 @@ Steps count array-cell reads or advances along next links. Moves count shifted/c
 - results/results.csv: 36 measured cases from the student's run.
 - results/plots/W1.png through W4.png: time and three counters for each workload.
 - REPORT.pdf: five-page report with complexity, proofs, measurements and discussion.
-- DEFENSE.md: short explanations and exercises for preparation.
 
 Optional graph regeneration requires Python and matplotlib, only for plotting:
 
