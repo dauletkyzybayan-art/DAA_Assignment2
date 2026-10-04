@@ -11,6 +11,26 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataStructuresTest {
 
     @Test
+    void listCanBeReusedAfterRemovingAllTailElements() {
+        MyLinkedList list = new MyLinkedList(new OperationMetrics());
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        assertEquals(30, list.remove(2));
+        assertEquals(20, list.remove(1));
+        assertEquals(10, list.remove(0));
+        assertEquals(0, list.size());
+
+        list.add(40);
+        list.add(50);
+
+        assertEquals(2, list.size());
+        assertEquals(40, list.get(0));
+        assertEquals(50, list.get(1));
+    }
+    @Test
     void arrayPreservesValuesAfterGrowth() {
         DynamicArray array = new DynamicArray(new OperationMetrics());
 
