@@ -11,6 +11,23 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataStructuresTest {
 
     @Test
+    void arrayPreservesValuesAfterGrowth() {
+        DynamicArray array = new DynamicArray(new OperationMetrics());
+
+        for (int i = 0; i < 100; i++) {
+            array.add(i);
+        }
+
+        array.add(0, -1);
+
+        assertEquals(101, array.size());
+        assertEquals(-1, array.get(0));
+
+        for (int i = 0; i < 100; i++) {
+            assertEquals(i, array.get(i + 1));
+        }
+    }
+    @Test
     void emptyStructuresAndInvalidIndices() {
         DynamicArray array = new DynamicArray(new OperationMetrics());
         MyLinkedList list = new MyLinkedList(new OperationMetrics());
