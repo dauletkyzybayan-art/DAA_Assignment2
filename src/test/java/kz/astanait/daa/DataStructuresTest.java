@@ -11,6 +11,25 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataStructuresTest {
 
     @Test
+    void heapHandlesOnlyLeftChildAfterExtraction() {
+        MinHeap heap = new MinHeap(new OperationMetrics());
+
+        heap.insert(1);
+        heap.insert(2);
+        heap.insert(3);
+
+        assertEquals(1, heap.extractMin());
+        assertTrue(heap.isValidHeap());
+        assertEquals(2, heap.peekMin());
+
+        assertEquals(2, heap.extractMin());
+        assertTrue(heap.isValidHeap());
+
+        assertEquals(3, heap.extractMin());
+        assertEquals(0, heap.size());
+    }
+
+    @Test
     void listCanBeReusedAfterRemovingAllTailElements() {
         MyLinkedList list = new MyLinkedList(new OperationMetrics());
 
